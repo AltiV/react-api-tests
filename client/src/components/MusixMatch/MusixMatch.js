@@ -28,9 +28,6 @@ const MusixMatch = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      // TODO: Build URL to hit MusixMatch API
-      // console.log(event.target.value);
-      // console.log(category);
       axios
         .get("/api/musixmatch", {
           params: {

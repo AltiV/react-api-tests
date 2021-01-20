@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -24,12 +24,12 @@ function App() {
 
     // console.log(process.env.NODE_ENV)
 
-    let url = process.env.REACT_APP_SERVER_URL + "/api";
+    // let url = process.env.REACT_APP_SERVER_URL + "/api";
 
-    axios
-      .get(url)
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+    // axios
+    //   .get(url)
+    //   .then((response) => console.log(response))
+    //   .catch((error) => console.log(error));
   }, []);
 
   return (
