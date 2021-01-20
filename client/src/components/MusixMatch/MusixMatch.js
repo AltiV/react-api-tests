@@ -8,6 +8,7 @@ import {
   Select,
   MenuItem,
   FormControl,
+  Box,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 
@@ -18,23 +19,26 @@ import axios from "axios";
 const MusixMatch = () => {
   const classes = useStyles();
 
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("artists");
+  const [data, setData] = useState({});
 
   const CATEGORY_MAP = {
     artists: "artist.search",
-    albums: "album.search",
     tracks: "track.search",
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
+      setData({});
+
       axios
         .get("/api/musixmatch", {
           params: {
             category: CATEGORY_MAP[category],
+            searchValue: event.target.value,
           },
         })
-        .then((response) => console.log(response))
+        .then((response) => setData(response.data))
         .catch((error) => console.log(error));
     }
   };
@@ -65,14 +69,14 @@ const MusixMatch = () => {
           className={classes.categoryBox}
         >
           <Select onChange={handleCategoryChange} value={category}>
-            <MenuItem value="">Select Category...</MenuItem>
             <MenuItem value="artists">Artists</MenuItem>
-            <MenuItem value="albums">Albums</MenuItem>
             <MenuItem value="tracks">Tracks</MenuItem>
           </Select>
         </FormControl>
         {/* <Typography variant="subtitle1">Search</Typography> */}
       </Card>
+
+      <Box>{JSON.stringify(data)}</Box>
     </>
   );
 };

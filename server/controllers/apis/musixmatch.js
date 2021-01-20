@@ -2,14 +2,19 @@ import axios from "axios";
 // import mongoose from 'mongoose'
 // import PostMessage from '../models/postMessage.js'
 
-// URL: https://api.musixmatch.com/ws/1.1/chart.artists.get?apikey=f497659d18b946e60bae1af18f62ac13&page=1&page_size=3&country=CA
-
 export const getData = (req, res) => {
   // GET requests data is retrieved from req.query instead of req.body
-  const { category } = req.query;
+  const { category, searchValue } = req.query;
 
   // Build the URL
   let url = `${process.env.URL_MUSIXMATCH}/${category}?apikey=${process.env.API_KEY_MUSIXMATCH}`;
+
+  // Generic addition of search parameter; to be greatly expanded on
+  if (category === "artist.search") {
+    url += `&q_artist=${searchValue}`;
+  } else if (category === "track.search") {
+    url += `&q_track=${searchValue}`;
+  }
 
   axios
     .get(url)
