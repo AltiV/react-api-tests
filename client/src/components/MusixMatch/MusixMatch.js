@@ -76,7 +76,7 @@ const MusixMatch = () => {
         {/* <Typography variant="subtitle1">Search</Typography> */}
       </Card>
 
-      <Box>{JSON.stringify(data)}</Box>
+      <Box>{JSON.stringify(data, null, "\t")}</Box>
     </>
   );
 };

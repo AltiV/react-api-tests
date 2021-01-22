@@ -14,13 +14,13 @@ const Navbar = () => {
             <NavLink to="/">API App</NavLink>
           </Typography>
           <nav>
-            {/* <Button
+            <Button
               component={NavLink}
-              to="/musixmatch"
+              to="/icanhazdadjoke"
               activeClassName={classes.activeLink}
             >
-              APIs
-            </Button> */}
+              Dad Jokes
+            </Button>
             <Button
               component={NavLink}
               to="/musixmatch"
